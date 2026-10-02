@@ -1,0 +1,43 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "m3e.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ItemMusicSheetSongbookMixin",
+    "CommandImportInPlaceSheetMixin",
+    "ItemMusicSheetTempoTooltipMixin",
+    "ItemsInstrumentRegistryMixin",
+    "ItemInstrumentSampleRangeMixin",
+    "SoundEventsImportedBankMixin",
+    "MusicBoxContentsLabelSyncMixin",
+    "MusicBoxDexedPatchEjectMixin",
+    "MusicBoxInstrumentStackMixin",
+    "MusicBoxInstrumentProfileMixin",
+    "MusicBoxRemovalMixin",
+    "MusicBoxShiftRightClickMixin",
+    "MusicUpdatePacketHandlerMixin"
+  ],
+  "client": [
+    "client.DexedItemSwapAnimationMixin",
+    "client.GuiInstrumentExtensionMixin",
+    "client.GuiInstrumentKeyboardLayoutMixin",
+    "client.ItemInstrumentExtendedRangeMixin",
+    "client.MidiHandlerCloseGuardMixin",
+    "client.NoteSoundEnvelopeMixin",
+    "client.SingleNoteClientEnvelopeMixin",
+    "client.SingleNoteClientDexedMixin",
+    "client.MidiInputReceiverExpressionMixin",
+    "client.GuiMusicSheetImportMixin",
+    "client.MusicManagerClientScoreMixin",
+    "client.MusicBoxSheetBindingMixin",
+    "client.MusicBoxSheetLifecycleMixin",
+    "client.SoundControllerSheetBindingMixin",
+    "client.SoundControllerMusicSheetMixin",
+    "client.MusicBoxOptionsScreenMixin",
+    "client.SoundManagerAccessor",
+    "client.SoundEngineAccessor",
+    "client.SoundEngineExtendedPitchMixin"
+  ],
+  "injectors": {"defaultRequire": 1}
+}

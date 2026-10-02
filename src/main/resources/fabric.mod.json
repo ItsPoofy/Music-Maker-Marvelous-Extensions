@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "m3e",
+  "version": "${version}",
+  "name": "Music Maker’s Marvelous Extensions",
+  "description": "MIDI, sheet, instrument UI, and music-box extensions for Music Maker.",
+  "authors": ["M3E contributors"],
+  "license": "GPL-3.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["m3e.M3E"],
+    "client": ["m3e.client.M3EClient"],
+    "modmenu": ["m3e.client.M3EModMenuApi"]
+  },
+  "mixins": ["m3e.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "fabric-api": "*",
+    "minecraft": "26.2",
+    "xercamusic": ">=26.2-1.0.1",
+    "yet_another_config_lib_v3": ">=3.9.5"
+  },
+  "suggests": {
+    "modmenu": ">=20.0.1"
+  }
+}

@@ -1,0 +1,57 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version '1.17.16'
+}
+
+ext.xercaMusicJar = {
+    String configuredPath = providers.gradleProperty('xercamusic_jar')
+            .orElse(providers.environmentVariable('XERCAMUSIC_JAR')).getOrNull()
+    File jarFile = configuredPath ? rootProject.file(configuredPath) : null
+    if (jarFile == null || !jarFile.isFile()) {
+        throw new GradleException('Pass -Pxercamusic_jar=<path> or set XERCAMUSIC_JAR to a Music Maker JAR.')
+    }
+    jarFile
+}
+
+
+version = project.mod_version
+group = project.maven_group
+
+base { archivesName = 'm3e' }
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.isxander.dev/releases' }
+    maven { url = 'https://maven.terraformersmc.com/releases' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation 'dev.isxander:yet-another-config-lib:3.9.5+26.2-fabric'
+    compileOnly 'com.terraformersmc:modmenu:20.0.1'
+    implementation files(rootProject.ext.xercaMusicJar())
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand 'version': project.version }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+
+java { withSourcesJar() }
+
+tasks.named('jar') {
+    from(rootProject.file('LICENSE')) {
+        into 'META-INF'
+        rename { 'LICENSE-m3e.txt' }
+    }
+    from(project.file('NOTICE.md')) {
+        into 'META-INF'
+        rename { 'NOTICE-m3e.md' }
+    }
+}

@@ -1,0 +1,25 @@
+.gradle/
+.idea/
+.vscode/
+build/
+builds/
+run/
+out/
+bin/
+**/build/
+**/.gradle/
+**/run/
+**/out/
+**/.toolchains/
+*.iml
+*.log
+*.class
+desktop.ini
+Thumbs.db
+
+# Local dependency configuration. Use XERCAMUSIC_JAR or
+# -Pxercamusic_jar instead of committing machine-specific paths.
+local.properties
+
+# Large generated repository snapshots are not project inputs.
+repomix-output.xml
